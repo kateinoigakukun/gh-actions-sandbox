@@ -32,9 +32,9 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: artifact
-          path: ${{ env.GITHUB_WORKSPACE }}/artifact/*.txt
+          path: ${{ github.workspace }}/artifact/*.txt
       - name: Upload artifact Part 2
         uses: actions/upload-artifact@v1
         with:
           name: artifact
-          path: ${{ env.GITHUB_WORKSPACE }}/../artifact/*.txt
+          path: ${{ github.workspace }}/../artifact/*.txt
