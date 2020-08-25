@@ -29,12 +29,12 @@ jobs:
           touch $GITHUB_WORKSPACE/artifact/bar.txt
           cp -r $GITHUB_WORKSPACE/artifact $GITHUB_WORKSPACE/../artifact
       - name: Upload artifact Part 1
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2
         with:
           name: artifact
-          path: ${{ github.workspace }}/artifact
+          path: ${{ github.workspace }}/artifact/*.txt
       - name: Upload artifact Part 2
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2
         with:
           name: artifact
-          path: ${{ github.workspace }}/../artifact
+          path: ${{ github.workspace }}/../artifact/*.txt
