@@ -21,6 +21,7 @@ jobs:
         env:
           IS_RESTORED: ${{ steps.cache.outputs.cache-hit }}
         run: |
+          ls $HOME/cache || true
           echo $IS_RESTORED
           mkdir -p $HOME/cache
           touch $HOME/cache/foo.txt
