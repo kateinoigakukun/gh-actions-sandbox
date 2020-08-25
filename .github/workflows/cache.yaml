@@ -13,7 +13,7 @@ jobs:
       - uses: actions/cache@v2
         id: cache
         with:
-          path: ../cache
+          path: ${{ env.HOME }}/cache
           key: ${{ runner.os }}-v1-${{ steps.cache_timestamp.outputs.timestamp }}
           restore-keys: |
             ${{ runner.os }}-v1-
@@ -22,5 +22,5 @@ jobs:
           IS_RESTORED: ${{ steps.cache.outputs.cache-hit }}
         run: |
           echo $IS_RESTORED
-          mkdir -p ../cache
-          touch ../cache/foo.txt
+          mkdir -p $HOME/cache
+          touch $HOME/cache/foo.txt
