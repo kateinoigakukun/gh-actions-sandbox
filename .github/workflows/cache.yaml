@@ -13,7 +13,7 @@ jobs:
       - uses: actions/cache@v2
         id: cache
         with:
-          path: ${{ env.HOME }}/cache
+          path: ~/cache
           key: ${{ runner.os }}-v1-${{ steps.cache_timestamp.outputs.timestamp }}
           restore-keys: |
             ${{ runner.os }}-v1-
