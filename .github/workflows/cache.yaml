@@ -25,3 +25,16 @@ jobs:
           echo $IS_RESTORED
           mkdir -p $HOME/cache
           touch $HOME/cache/foo.txt
+          mkdir -p $GITHUB_WORKSPACE/artifact
+          touch $GITHUB_WORKSPACE/artifact/bar.txt
+          cp -r $GITHUB_WORKSPACE/artifact $GITHUB_WORKSPACE/../artifact
+      - name: Upload artifact Part 1
+        uses: actions/upload-artifact@v1
+        with:
+          name: artifact
+          path: ${{ env.GITHUB_WORKSPACE }}/artifact/*.txt
+      - name: Upload artifact Part 2
+        uses: actions/upload-artifact@v1
+        with:
+          name: artifact
+          path: ${{ env.GITHUB_WORKSPACE }}/../artifact/*.txt
