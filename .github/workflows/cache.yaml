@@ -10,7 +10,7 @@ jobs:
         run: |
           string(TIMESTAMP current_date "%Y-%m-%d-%H;%M;%S" UTC)
           message("::set-output name=timestamp::${current_date}")
-      - uses: pat-s/always-upload-cache@v2.1.0
+      - uses: actions/cache@v2
         id: cache
         with:
           path: ../cache
