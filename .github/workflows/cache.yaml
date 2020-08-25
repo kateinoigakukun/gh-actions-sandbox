@@ -18,4 +18,5 @@ jobs:
             ${{ runner.os }}-v1-
       - name: Create cachable file
         run: |
+          mkdir -p ../cache
           touch ../cache/foo.txt
