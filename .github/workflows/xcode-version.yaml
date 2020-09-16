@@ -12,5 +12,5 @@ jobs:
         run: |
           ls -l /System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/six.py
           brew list
-          brew uninstall python@2 || true
+          brew uninstall $(brew list | grep python@2)
           python -m six
