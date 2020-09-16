@@ -1,0 +1,8 @@
+name: Check macOS virtual machine
+on: [push]
+jobs:
+  vm-info:
+    runs-on: macos-latest
+    steps:
+      - name: List Xcode versions
+        run: ls -l /Applications/Xcode*
