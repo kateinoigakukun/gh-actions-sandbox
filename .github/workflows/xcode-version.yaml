@@ -5,4 +5,9 @@ jobs:
     runs-on: macos-latest
     steps:
       - name: List Xcode versions
-        run: ls -l /Applications/Xcode*
+        run: |
+          ls -l /Applications/Xcode*
+          cat /Applications/Xcode*.app/Contents/version.plist
+      - name: Check python-six is installed
+        run: |
+          ls -l /System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/six.py
