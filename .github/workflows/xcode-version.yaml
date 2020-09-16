@@ -11,3 +11,4 @@ jobs:
       - name: Check python-six is installed
         run: |
           ls -l /System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/six.py
+          python -m six
