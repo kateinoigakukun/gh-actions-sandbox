@@ -1,0 +1,11 @@
+name: Try ssh action
+on: [push]
+jobs:
+  ssh-ubuntu:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: mxschmitt/action-tmate@v1
+  ssh-macos:
+    runs-on: macos-latest
+    steps:
+      - uses: mxschmitt/action-tmate@v1
