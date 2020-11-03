@@ -1,7 +1,7 @@
 name: Check Checkout action
 on: [push]
 jobs:
-  print-envs:
+  print-envs-v1:
     runs-on: ubuntu-18.04
     steps:
       - name: Create files before checkout
@@ -15,6 +15,26 @@ jobs:
           echo "PWD=$(pwd)"
           ls -l
       - uses: actions/checkout@v1
+        with:
+          path: dir
+      - name: Create files after checkout dir
+        run: |
+          echo "PWD=$(pwd)"
+          ls -l
+  print-envs-v2:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Create files before checkout
+        run: |
+          touch foo
+          echo "PWD=$(pwd)"
+          ls -l
+      - uses: actions/checkout@v2
+      - name: Create files after checkout
+        run: |
+          echo "PWD=$(pwd)"
+          ls -l
+      - uses: actions/checkout@v2
         with:
           path: dir
       - name: Create files after checkout dir
