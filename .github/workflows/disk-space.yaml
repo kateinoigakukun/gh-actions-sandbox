@@ -1,0 +1,30 @@
+name: Check disk space
+on: [push]
+jobs:
+  print-disk-space:
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-18.04
+          - os: ubuntu-20.04
+          - os: macos-10.15
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Disk space (before cleanup)
+        run: df -h
+      - name: Cleanup (Linux)
+        if: startsWith(matrix.os, 'ubuntu')
+        run: |
+          sudo apt-get purge libgcc-9-dev gcc-9 libstdc++-9-dev clang-6.0 llvm-6.0
+          sudo swapoff -a
+          sudo rm -f /swapfile
+          sudo rm -rf /opt/hostedtoolcache
+          sudo rm -rf /usr/share/dotnet
+          sudo apt clean
+          docker rmi $(docker image ls -aq)
+      - name: Cleanup (macOS)
+        if: startsWith(matrix.os, 'macos')
+        run: |
+          docker rmi $(docker image ls -aq)
+      - name: Disk space (after cleanup)
+        run: df -h
