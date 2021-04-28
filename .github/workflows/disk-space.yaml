@@ -24,7 +24,6 @@ jobs:
           docker rmi $(docker image ls -aq)
       - name: Cleanup (macOS)
         if: startsWith(matrix.os, 'macos')
-        run: |
-          docker rmi $(docker image ls -aq)
+        run: "true" # nop
       - name: Disk space (after cleanup)
         run: df -h
