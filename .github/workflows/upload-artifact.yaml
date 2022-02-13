@@ -1,0 +1,19 @@
+name: Check artifact
+on: [push]
+jobs:
+  upload:
+    runs-on: ubuntu-20.04
+    steps:
+      - run: echo Hello > hello.txt
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: hello-txt
+          path: hello.txt
+  download:
+    needs: [upload]
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: mxschmitt/action-tmate@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
