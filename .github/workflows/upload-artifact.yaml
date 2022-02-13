@@ -5,15 +5,22 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - run: echo Hello > hello.txt
+      - run: echo Yay > yay.txt
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
           name: hello-txt
           path: hello.txt
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: yay-txt
+          path: yay.txt
   download:
     needs: [upload]
     runs-on: ubuntu-20.04
     steps:
-      - uses: mxschmitt/action-tmate@v3
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/download-artifact@v2
+        with:
+          path: release
+      - run: tree
