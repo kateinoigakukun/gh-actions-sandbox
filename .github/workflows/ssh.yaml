@@ -1,5 +1,6 @@
 name: Try ssh action
-on: [push]
+# on: [push]
+on: []
 jobs:
   ssh-ubuntu:
     runs-on: ubuntu-18.04
