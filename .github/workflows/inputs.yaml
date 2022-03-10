@@ -18,18 +18,22 @@ jobs:
       matrix:
         entry:
           - task: "X"
+            extra_key: "A"
           - task: "Y"
           - task: "Z"
     steps:
       - name: Print variables
         run: |
-          echo ${{ inputs }}
-          echo ${{ inputs.bool_input }}
-          echo ${{ inputs.string_input }}
-          echo ${{ inputs.string_input != '' }}
-          echo ${{ inputs.bool_input && inputs.string_input }}
-          echo ${{ inputs.bool_input && inputs.string_input }}
-          echo ${{ matrix.entry }}
-          echo ${{ matrix.entry.task }}
+          echo inputs = ${{ inputs }}
+          echo inputs.bool_input = ${{ inputs.bool_input }}
+          echo inputs.string_input = ${{ inputs.string_input }}
+          echo "inputs.string_input != ''" = ${{ inputs.string_input != '' }}
+          echo "inputs.bool_input && inputs.string_input" = ${{ inputs.bool_input && inputs.string_input }}
+          echo matrix.entry = ${{ matrix.entry }}
+          echo matrix.entry.task = ${{ matrix.entry.task }}
+          echo matrix.entry.extra_key = ${{ matrix.entry.extra_key }}
+      - name: Run if "inputs.string_input != '' && matrix.entry.task != ''"
+        run: echo OK
+        if: ${{ inputs.string_input != '' && matrix.entry.extra_key != '' }}
 
 
