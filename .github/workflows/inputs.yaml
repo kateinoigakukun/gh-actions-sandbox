@@ -1,0 +1,35 @@
+name: workflow-call
+on:
+  workflow_call:
+    inputs:
+      bool_input:
+        type: boolean
+        description: "BOOL"
+        default: true
+      string_input:
+        type: string
+        description: "STRING"
+        required: true
+jobs:
+  tasks:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        entry:
+          - task: "X"
+          - task: "Y"
+          - task: "Z"
+    steps:
+      - name: Print variables
+        run: |
+          echo ${{ inputs }}
+          echo ${{ inputs.bool_input }}
+          echo ${{ inputs.string_input }}
+          echo ${{ inputs.string_input != '' }}
+          echo ${{ inputs.bool_input && inputs.string_input }}
+          echo ${{ inputs.bool_input && inputs.string_input }}
+          echo ${{ matrix.entry }}
+          echo ${{ matrix.entry.task }}
+
+
