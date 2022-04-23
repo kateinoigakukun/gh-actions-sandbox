@@ -18,3 +18,4 @@ jobs:
     if: ${{ always() }}
     steps:
     - run: echo "Hello"
+    - run: echo "needs.dep-x.result=${{ needs.dep-x.result }}"
