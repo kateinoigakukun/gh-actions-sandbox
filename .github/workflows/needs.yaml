@@ -8,6 +8,11 @@ jobs:
     - run: echo "Hello"
   needs-x:
     runs-on: ubuntu-latest
-    needs: [dep-x]
+    strategy:
+      matrix:
+        entry:
+        - needs: [dep-x]
+        - needs: []
+    needs: ${{ matrix.entry.needs }}
     steps:
     - run: echo "Hello"
