@@ -1,0 +1,13 @@
+name: Check needs
+on: [push]
+jobs:
+  dep-x:
+    runs-on: ubuntu-latest
+    if: false
+    steps:
+    - run: echo "Hello"
+  needs-x:
+    runs-on: ubuntu-latest
+    needs: [dep-x]
+    steps:
+    - run: echo "Hello"
