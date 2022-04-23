@@ -7,14 +7,8 @@ jobs:
     steps:
     - run: echo "Hello"
   needs-x:
-    strategy:
-      matrix:
-        entry:
-        - needs: [dep-x]
-          runs-on: ubuntu-latest
-        - needs: []
-          runs-on: ubuntu-latest
-    runs-on: ${{ matrix.entry.runs-on }}
-    needs: ${{ matrix.entry.needs }}
+    runs-on: ubuntu-latest
+    needs: [dep-x]
+    if: ${{ always() }}
     steps:
     - run: echo "Hello"
