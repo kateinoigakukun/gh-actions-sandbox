@@ -5,24 +5,16 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       runs-on: ${{ steps.echo.outputs.runs-on }}
-      var-foo: ${{ steps.var-foo.outputs.var-foo }}
-      var-bar: ${{ steps.var-bar.outputs.var-bar }}
-    strategy:
-      matrix:
-        entry:
-        - id: foo
-        - id: bar
     steps:
     - id: echo
       run: echo '::set-output name=runs-on::ubuntu-latest'
-    - id: var-${{ matrix.entry.id }}
-      run: echo '::set-output name=var::value-${{ matrix.entry.id }}'
   needs-x:
     needs: [output-x]
     strategy:
       matrix:
         entry:
         - runs-on: ${{ needs.output-x.outputs.runs-on }}
+    if: ${{ matrix.entry.runs-on != "" }}
     runs-on: ${{ matrix.entry.runs-on }}
     steps:
     - run: echo "Hello"
