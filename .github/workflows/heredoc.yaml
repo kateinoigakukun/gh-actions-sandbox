@@ -12,4 +12,4 @@ jobs:
             "outputs": {}
           }
           EOF
-          echo "entries=$(cat \"$START_RUNNER_JSON\")" >> $GITHUB_OUTPUT
+          echo "entries=$(cat $START_RUNNER_JSON)" >> $GITHUB_OUTPUT
