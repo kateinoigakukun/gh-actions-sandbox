@@ -1,0 +1,11 @@
+name: Check heredoc syntax
+on: [push]
+jobs:
+  print-envs:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          cat <<EOF > ${{ runner.temp }}/github.json
+          ${{ toJson(github) }}
+          EOF
+          cat ${{ runner.temp }}/github.json
