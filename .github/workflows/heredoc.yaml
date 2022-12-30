@@ -5,7 +5,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          cat <<EOF > ${{ runner.temp }}/github.json
-          ${{ toJson(github) }}
+          START_RUNNER_JSON="/home/runner/work/_temp/start-runner.json"
+          echo <<EOF > "$START_RUNNER_JSON"
+          {
+            "result": "skipped",
+            "outputs": {}
+          }
           EOF
-          cat ${{ runner.temp }}/github.json
+          echo "entries=$(cat \"$START_RUNNER_JSON\")" >> $GITHUB_OUTPUT
