@@ -1,0 +1,8 @@
+name: Check core and mem size
+on: [push]
+jobs:
+  print-disk-space:
+    runs-on: ubuntu-20.04
+    steps:
+      - run: nproc --all
+      - run: free -g -h -t
