@@ -11,6 +11,6 @@ jobs:
     steps:
       - uses: mxschmitt/action-tmate@v3
   ssh-macos-12:
-    runs-on: macos-11
+    runs-on: macos-12
     steps:
       - uses: mxschmitt/action-tmate@v3
