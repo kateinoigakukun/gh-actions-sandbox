@@ -1,16 +1,15 @@
 name: Try ssh action
 on:
   workflow_dispatch:
+    inputs:
+      runs-on:
+        description: 'Runs on'
+        required: true
+        type: string
+        default: 'macos-latest'
+
 jobs:
-  # ssh-ubuntu:
-  #   runs-on: ubuntu-18.04
-  #   steps:
-  #     - uses: mxschmitt/action-tmate@v1
-  ssh-macos-11:
-    runs-on: macos-11
-    steps:
-      - uses: mxschmitt/action-tmate@v3
-  ssh-macos-12:
-    runs-on: macos-12
+  ssh-macos:
+    runs-on: ${{ inputs.runs-on }}
     steps:
       - uses: mxschmitt/action-tmate@v3
