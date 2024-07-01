@@ -7,6 +7,7 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
+      - run: echo "FROM scratch" > Dockerfile
       - uses: docker/build-push-action@v6
   post-job:
     runs-on: ubuntu-latest
