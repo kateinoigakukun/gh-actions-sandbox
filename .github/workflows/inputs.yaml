@@ -10,6 +10,8 @@ on:
         type: string
         description: "STRING"
         required: true
+concurrency:
+  group: ${{ github.workflow }}
 jobs:
   tasks:
     runs-on: ubuntu-latest
@@ -35,5 +37,6 @@ jobs:
       - name: Run if "inputs.string_input != '' && matrix.entry.task != ''"
         run: echo OK
         if: ${{ inputs.string_input != '' && matrix.entry.extra_key != '' }}
+      - run: sleep 300
 
 
