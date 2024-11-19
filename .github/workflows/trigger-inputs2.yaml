@@ -1,10 +1,11 @@
-name: Trigger inputs
+name: Trigger inputs2
 on: [workflow_dispatch]
 
 jobs:
   trigger:
-    uses: ./.github/workflows/inputs.yaml
-    with:
-      bool_input: true
-      string_input: "YAY"
+    runs-on: ubuntu-latest
+    steps:
+      - run: gh workflow run env.yaml -R ${{ github.repository }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
