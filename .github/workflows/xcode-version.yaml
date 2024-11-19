@@ -1,5 +1,5 @@
 name: Check macOS virtual machine
-on: [push]
+on: [workflow_dispatch]
 jobs:
   vm-info:
     runs-on: macos-latest

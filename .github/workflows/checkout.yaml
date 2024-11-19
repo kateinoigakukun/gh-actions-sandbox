@@ -1,5 +1,5 @@
 name: Check Checkout action
-on: [push]
+on: [workflow_dispatch]
 jobs:
   print-envs-v1:
     runs-on: ubuntu-18.04

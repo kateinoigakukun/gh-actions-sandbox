@@ -1,5 +1,5 @@
 name: Check actions/cache
-on: [push]
+on: [workflow_dispatch]
 jobs:
   cache-artifact:
     runs-on: ubuntu-18.04

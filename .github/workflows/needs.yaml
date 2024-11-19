@@ -1,5 +1,5 @@
 name: Check needs
-on: [push]
+on: [workflow_dispatch]
 jobs:
   dep-x:
     runs-on: ubuntu-latest
