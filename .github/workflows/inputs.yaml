@@ -26,6 +26,7 @@ jobs:
     steps:
       - name: Print variables
         run: |
+          echo github.workflow = ${{ github.workflow }}
           echo inputs = ${{ inputs }}
           echo inputs.bool_input = ${{ inputs.bool_input }}
           echo inputs.string_input = ${{ inputs.string_input }}
