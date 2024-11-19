@@ -1,0 +1,10 @@
+name: Trigger inputs
+on: [workflow_dispatch]
+
+jobs:
+  trigger:
+    uses: ./.github/workflows/inputs.yaml
+    with:
+      bool_input: true
+      string_input: "YAY"
+
