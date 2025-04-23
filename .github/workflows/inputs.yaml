@@ -22,6 +22,7 @@ jobs:
           - task: "Y"
           - task: "Z"
     steps:
+      - run: env
       - name: Print variables
         run: |
           echo inputs = ${{ inputs }}
